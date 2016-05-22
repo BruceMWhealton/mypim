@@ -1,4 +1,9 @@
-{% for contact in contacts %}
-  <h2>{{ contact.first_name }} {{ contact.last_name }}</h2>
-  <h3>{{ contact.organization }}</h3>
-{% endfor %}
+{% extends "layout.html" %}
+{% block content %}
+  {% for contact in contacts %}
+    <div class="container">
+      <h2>{{ contact.first_name }} {{ contact.last_name }}</h2>
+      <h3>{{ contact.organization }}</h3>
+    </div>
+  {% endfor %}
+{% endblock %}

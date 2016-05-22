@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+
+{% block title %}{{ contact.first_name}} {{ contact.last_name }}{% endblock %}
+
+{% block content %}
+  <article>
+    <h2>{{ contact.first_name}} {{ contact.last_name }}</h2>
+    {% if contact.organization %}
+    <h3>{{ contact.organization }}</h3>
+    {% endif %}
+    {% if contact.phone1 %}
+    <p> {{ contact.phone1 }}</p>
+    {% endif %}
+    {% if contact.phone2 %}
+    <p>{{ contact.phone2 }}</p>
+    {% endif %}
+    {% if contact.street_line1 %}
+    <p>{{ contact.street_line1 }}</p>
+    {% endif %}
+    {% if contact.street_line2 %}
+    <p>{{ contact.street_line2 }}</p>
+    {% endif %}
+
+    <p>{% if contact.city %}{{ contact.city }}{% endif %}, {% if contact.state %}{{ contact.state }}{% endif %}
+      {% if contact.zipcode %}{{ contact.zipcode }}{% endif %}</p>
+
+
+    {% if contact.email1 %}
+    <p>Email: {{ contact.email1 }}</p>
+    {% endif %}
+    {% if contact.email2 %}
+    <p>Email2: {{ contact.email2 }}</p>
+    {% endif %}
+    {% if contact.website %}
+    <p>Website: {{ contact.website }}</p>
+    {% endif %}
+    {% if contact.notes %}
+    <p>{{ contact.notes }}</p>
+    {% endif %}
+    <section>
+      {% for relationship in contact.relationship_set.all %}
+        <h3>{{ relationship.category }}</h3>
+      {% endfor %}
+    </section>
+
+  </article>
+
+{% endblock %}
